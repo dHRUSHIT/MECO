@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_vertical_margin">
+
+
+    <Switch
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="feature"
+        android:id="@+id/on_off_feature"
+        android:layout_gravity="center_horizontal"
+
+        android:checked="true"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/activity_horizontal_margin"
+        android:textStyle="normal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+
+        android:text="use global password"
+        android:id="@+id/global_password_text"
+        android:gravity="left|center_vertical"
+        android:layout_gravity="center_vertical"
+        android:layout_below="@+id/on_off_feature"
+        android:layout_alignParentStart="true"
+
+        android:enabled="false"
+        android:focusable="false"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:textColor="@android:color/background_dark"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_centerVertical="true"
+        android:id="@+id/checkBox"
+
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:checked="true"
+        android:layout_alignBottom="@+id/global_password_text"
+        android:layout_alignParentEnd="true"
+        />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:id="@+id/editText"
+        android:hint="custom password"
+        android:layout_below="@+id/global_password_text"
+        android:layout_alignParentStart="true"
+        android:singleLine="true"
+        android:maxWidth="180dp"
+        android:visibility="gone"
+        android:inputType="textPassword"
+        />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/editText"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/editText"
+        android:visibility="gone"/>
+
+    <!--<ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+
+        android:src="@drawable/ic_action_visibility_gray"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignStart="@+id/checkBox"
+        android:visibility="gone"
+        android:onClick="passwordVisibilityToggle"
+        android:background="@drawable/ripple_shape"/>-->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+
+        android:src="@drawable/ic_action_visibility_gray"
+        android:layout_alignTop="@+id/editText"
+        android:layout_alignStart="@+id/checkBox"
+        android:visibility="gone"
+        android:onClick="passwordVisibilityToggle"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:src="@drawable/ic_communication_email"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_below="@+id/textView"
+        android:visibility="gone"
+        android:onClick="mailReplyToggle"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:id="@+id/imageView3"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/imageView2"
+        android:src="@drawable/ic_communication_message_gray"
+        android:visibility="gone"
+        android:onClick="messageReplyToggle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:text="use global reply mode"
+        android:id="@+id/textView"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/progressBar"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_dark"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:id="@+id/checkBox2"
+        android:layout_alignBottom="@+id/textView"
+        android:layout_alignParentEnd="true"
+        android:checked="true" />
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="#90909090"
+        android:id="@+id/separatorLine"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView5"
+        android:foregroundGravity="center"
+        android:layout_below="@+id/separatorLine"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_navigation_check_green"
+        android:onClick="saveTempSettings"/>
+
+
+</RelativeLayout>

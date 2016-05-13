@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:paddingBottom="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight=".16">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="Global Passsword"
+            android:id="@+id/textView2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/textView3"
+            android:layout_weight="02"/>
+
+
+        <EditText
+            android:layout_width="226dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText2"
+            android:layout_weight="0.5"
+            android:layout_toEndOf="@+id/textView6" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="#90909090"
+        android:id="@+id/separatorLine1"
+        android:layout_weight="0"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".16"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Global Reply Mode"
+            android:id="@+id/textView3"
+            android:layout_weight="0.5"
+            android:gravity="center_vertical" />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_weight="0.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView6"
+            android:src="@drawable/ic_communication_message_gray"
+
+             />
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_weight="0.25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/activity_vertical_margin"
+            android:id="@+id/imageView7"
+            android:src="@drawable/ic_communication_email"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="#90909090"
+        android:id="@+id/separatorLine2"
+        android:layout_weight="0"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight=".16"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Turn all features"
+            android:id="@+id/textView6"
+            android:gravity="center_vertical"
+            android:layout_weight="1"
+
+            />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/switch1"
+            android:checked="false"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+
+
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="#90909090"
+        android:id="@+id/separatorLine3"
+        android:layout_weight="0"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Safe Numbers"
+        android:id="@+id/textView4"
+        android:gravity="center"
+        android:layout_weight=".16"
+        android:onClick="launchSafeNumberActivity"/>
+
+
+</LinearLayout>
