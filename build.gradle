@@ -24,5 +24,9 @@ task clean(type: Delete) {
 
 repositories {
     maven { url 'http://repo1.maven.org/maven2' }
+<<<<<<< HEAD
     jcenter { url "/home/dhrushit/Android/junit-4.12.jar" }
+=======
+    jcenter { url "C:\\Users\\dhrushit.s\\Downloads\\studio files\\junit-4.12.jar" }
+>>>>>>> new local repo
 }

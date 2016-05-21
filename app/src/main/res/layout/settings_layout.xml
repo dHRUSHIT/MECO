@@ -83,6 +83,7 @@
         android:layout_alignEnd="@+id/editText"
         android:visibility="gone"/>
 
+<<<<<<< HEAD
     <!--<ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -94,6 +95,8 @@
         android:visibility="gone"
         android:onClick="passwordVisibilityToggle"
         android:background="@drawable/ripple_shape"/>-->
+=======
+>>>>>>> new local repo
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -104,7 +107,12 @@
         android:layout_alignStart="@+id/checkBox"
         android:visibility="gone"
         android:onClick="passwordVisibilityToggle"
+<<<<<<< HEAD
         />
+=======
+        android:background="@drawable/ripple_shape"/>
+
+>>>>>>> new local repo
     <ImageView
         android:layout_width="wrap_content"
         android:paddingTop="@dimen/activity_horizontal_margin"
@@ -151,6 +159,31 @@
         android:layout_alignBottom="@+id/textView"
         android:layout_alignParentEnd="true"
         android:checked="true" />
+<<<<<<< HEAD
+=======
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:text="use safe numbers"
+        android:id="@+id/textView2"
+        android:textSize="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/imageView3"
+        android:layout_alignParentStart="true"
+        android:textColor="@android:color/background_dark"/>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:id="@+id/checkBox3"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentEnd="true"
+        android:checked="false" />
+
+>>>>>>> new local repo
     <View
         android:layout_height="1dp"
         android:layout_width="match_parent"
@@ -159,7 +192,11 @@
         android:paddingTop="@dimen/activity_horizontal_margin"
         android:background="#90909090"
         android:id="@+id/separatorLine"
+<<<<<<< HEAD
         android:layout_below="@+id/imageView2"
+=======
+        android:layout_below="@+id/textView2"
+>>>>>>> new local repo
         android:layout_alignParentEnd="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin" />
     <ImageView
@@ -169,7 +206,11 @@
         android:foregroundGravity="center"
         android:layout_below="@+id/separatorLine"
         android:layout_alignParentEnd="true"
+<<<<<<< HEAD
         android:src="@drawable/ic_navigation_check_green"
+=======
+        android:src="@drawable/ic_action_done_blue"
+>>>>>>> new local repo
         android:onClick="saveTempSettings"/>
 
 

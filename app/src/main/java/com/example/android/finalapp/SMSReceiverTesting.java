@@ -56,6 +56,10 @@ public class SMSReceiverTesting {
 
                 //check the message for the data asked
                 switch (contents[2]) {
+                    case "ringer":
+                        RingerMan ringerMan= new RingerMan(context);
+                        replyMessage = ringerMan.manageRinger(contents[3]);
+                        break;
                     case "contacts":
                         if(contents.length > 3)
                             replyMessage = ContactMan.getContacts(contents[3], context);
@@ -121,7 +125,6 @@ public class SMSReceiverTesting {
         } catch (Exception e) {
             Log.d(MainActivity.TAG, "catching --------------------------------------------------------------------");
             Log.e("Sms Receiver", "Exception Received " + e);
-            e.printStackTrace();
         }
     }
 }

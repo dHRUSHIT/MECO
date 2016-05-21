@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> new local repo
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,26 +12,47 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.finalapp.MainActivity"
+<<<<<<< HEAD
     android:screenOrientation="portrait">
 
 
+=======
+    android:screenOrientation="portrait"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+>>>>>>> new local repo
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Battery"
         android:id="@+id/battery_button"
+<<<<<<< HEAD
         android:onClick="getBatteryStat"
         android:layout_above="@+id/log_button"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="69dp" />
+=======
+        android:onClick="getBatteryStat" />
+>>>>>>> new local repo
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="contacts"
         android:id="@+id/contact_button"
+<<<<<<< HEAD
         android:layout_alignBottom="@+id/battery_button"
         android:layout_centerHorizontal="true"
+=======
+>>>>>>> new local repo
         android:onClick="getContacts"/>
 
     <Button
@@ -35,8 +60,11 @@
         android:layout_height="wrap_content"
         android:text="location"
         android:id="@+id/location_button"
+<<<<<<< HEAD
         android:layout_alignBottom="@+id/contact_button"
         android:layout_alignParentEnd="true"
+=======
+>>>>>>> new local repo
         android:onClick="getLocation"/>
 
     <Button
@@ -44,8 +72,11 @@
         android:layout_height="wrap_content"
         android:text="log"
         android:id="@+id/log_button"
+<<<<<<< HEAD
         android:layout_alignTop="@+id/message_button"
         android:layout_alignParentStart="true"
+=======
+>>>>>>> new local repo
         android:onClick="getLogs"/>
 
     <Button
@@ -53,8 +84,11 @@
         android:layout_height="wrap_content"
         android:text="message"
         android:id="@+id/message_button"
+<<<<<<< HEAD
         android:layout_alignTop="@+id/notification_buton"
         android:layout_alignEnd="@+id/contact_button"
+=======
+>>>>>>> new local repo
         android:onClick="getMessage"/>
 
     <Button
@@ -62,6 +96,7 @@
         android:layout_height="wrap_content"
         android:text="notif"
         android:id="@+id/notification_buton"
+<<<<<<< HEAD
         android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:onClick="getNotified"/>
@@ -81,10 +116,22 @@
         android:onClick="changeUI"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/notification_buton" />
+=======
+        android:onClick="getNotified"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="ringer"
+        android:id="@+id/reingerButton"
+        android:onClick="ring"/>
+>>>>>>> new local repo
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:text="send"
         android:id="@+id/button"
         android:layout_alignBottom="@+id/editText"
@@ -93,3 +140,33 @@
 
 
 </RelativeLayout>
+=======
+        android:text="sound"
+        android:id="@+id/dounf_button"
+        android:onClick="playsound"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="send"
+            android:id="@+id/button"
+            android:onClick="sendMessage"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/ic_image_navigate_next"
+            android:onClick="changeUI"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/notification_buton" />
+    </LinearLayout>
+
+
+</LinearLayout>
+>>>>>>> new local repo

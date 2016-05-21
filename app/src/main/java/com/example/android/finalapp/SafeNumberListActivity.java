@@ -8,7 +8,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +46,7 @@ public class SafeNumberListActivity extends AppCompatActivity {
     class SelectUser{
         String number;
         String Name;
-        Boolean Checked = false;
+        Boolean Checked=false;
         String ID;
 
         public SelectUser(){}
@@ -170,9 +169,10 @@ public class SafeNumberListActivity extends AppCompatActivity {
 
             v = new ViewHolder();
             v.check = (CheckBox) view.findViewById(R.id.safe_person_list_check);
+
 //            v.check.setOnCheckedChangeListener();
             final SelectUser s = (SelectUser)data.get(position);
-            v.check.setText(s.getName());
+            v.check.setText(s.getName() + "\n\t"+ s.getNumber());
             v.check.setTag(position);
             v.check.setChecked(s.getChecked());
             view.setTag(s);
@@ -196,16 +196,11 @@ public class SafeNumberListActivity extends AppCompatActivity {
         setContentView(R.layout.safe_number_list);
 
         sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-        WindowManager.LayoutParams params = getWindow().getAttributes();
-        DisplayMetrics displaymetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
-        int height = displaymetrics.heightPixels;
-        int width = displaymetrics.widthPixels;
-
-        params.x = -20;
-        params.height = height-40;
-        params.width = width-20;
-        params.y = -20;
+//        WindowManager.LayoutParams params = getWindow().getAttributes();
+//        params.x = -10;
+//        params.height = 1000;
+//        params.width = 550;
+//        params.y = -10;
 
         listView = (ListView) findViewById(R.id.safe_numbers_list);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -222,6 +217,16 @@ public class SafeNumberListActivity extends AppCompatActivity {
         });
         selectUsers = new ArrayList<SelectUser>();
         resolver = this.getContentResolver();
+
+//        Cursor cids;
+//        cids = getContentResolver().query(ContactsContract.Contacts.CONTENT_URI,new String[]{ContactsContract.Contacts._ID},null,null,null);
+//        String[] ids = new String[cids.getCount()];
+//        if(cids.getCount()>0){
+//            while (cids.moveToNext()){
+//                ids[cids.getPosition()] = cids.getString(cids.getColumnIndex(ContactsContract.Contacts._ID));
+//            }
+//        }
+//        phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?", ids, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
         phones = getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, null, null, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME + " ASC");
         LoadContact loadContact = new LoadContact();
         loadContact.execute();
@@ -278,7 +283,6 @@ public class SafeNumberListActivity extends AppCompatActivity {
 
     }*/
 }
-
 
 
 

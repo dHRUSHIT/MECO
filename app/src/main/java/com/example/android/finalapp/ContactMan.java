@@ -77,6 +77,7 @@ public class ContactMan {
                 projection_contact = new String[]{ContactsContract.Contacts._ID,ContactsContract.Contacts.DISPLAY_NAME};
                 String[] arg = {"%"+parts[0]+"%"};
                 cursor1 = cr.query(contactUri,projection_contact,ContactsContract.Contacts.DISPLAY_NAME + " LIKE ? ",arg,null);
+
             }
 
         }
@@ -109,6 +110,14 @@ public class ContactMan {
                         break;
                 }
             }
+        }
+        else{
+            selection_email = ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ? ";
+            selection_phone = ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ? ";
+            Projection_phone.add(ContactsContract.CommonDataKinds.Phone.NUMBER);
+            Projection_email.add(ContactsContract.CommonDataKinds.Email.ADDRESS);
+            get_phone = true;
+            get_email = true;
         }
 
         Toast.makeText(context, "found " + cursor1.getCount() + " contacts", Toast.LENGTH_SHORT).show();

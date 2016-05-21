@@ -42,7 +42,7 @@ public class SetSettings extends Activity{
     Boolean replyWithMail = false;
     String customPassword;
 
-    String[] feature = {"contacts", "logs", "location", "battery", "notification", "message", "control"};
+    String[] feature = {"contacts", "logs", "location", "battery", "notification", "message", "ringer"};
     String feature_current;
     int pos;
 
@@ -51,13 +51,15 @@ public class SetSettings extends Activity{
 
         Intent i = getIntent();
         pos = i.getIntExtra("position",1);
+
         feature_current = feature[pos];
         sharedPreferences = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         int color = Color.rgb(127, 127, 127);
         setTitleColor(color);
         setContentView(R.layout.settings_layout);
 
-        //view = View.inflate(this, R.layout.settings_layout, null);
+
+        view = View.inflate(this, R.layout.settings_layout, null);
 
         passwordVisibility = (ImageView)findViewById(R.id.imageView);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
@@ -158,7 +160,7 @@ public class SetSettings extends Activity{
 
         ImageView imageView = (ImageView) view1;
         if (!replyWithMail) {
-            imageView.setImageResource(R.drawable.ic_communication_email_green);
+            imageView.setImageResource(R.drawable.ic_communication_email_blue);
             replyWithMail = true;
         } else {
             imageView.setImageResource(R.drawable.ic_communication_email);
@@ -208,12 +210,10 @@ public class SetSettings extends Activity{
 
 
     public void saveTempSettings(View view1) {
+        String custPass = ((EditText) view.findViewById(R.id.editText)).getText().toString();
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if(!useGlobalPassword) {
-            view = view1.getRootView();
-            String customPass = ((EditText) view.findViewById(R.id.editText)).getText().toString();
-            Toast.makeText(this,customPass,Toast.LENGTH_SHORT).show();
-            editor.putString(feature_current + "_custom_password_key", customPass);
+        if(!useGlobalPassword && custPass!="") {
+            editor.putString(feature_current + "_custom_password_key", ((EditText) view.findViewById(R.id.editText)).getText().toString());
             Log.d("------------------", "custom password for " + feature_current + "set to " + ((EditText) view.findViewById(R.id.editText)).getText().toString());
         }
         else{
@@ -241,10 +241,18 @@ public class SetSettings extends Activity{
         }
         editor.putBoolean("allow_" + feature_current + "_access", true);
         Log.d("---------", feature_current + " allowed");
+
+        CheckBox checkBox3 = (CheckBox) findViewById(R.id.checkBox3);
+        boolean safeNum = checkBox3.isChecked();
+        editor.putBoolean(feature_current+"_safe_numbers",safeNum);
+        Log.d("setting safe number" , "safe number" + safeNum);
+
         editor.commit();
         Log.d("---------", feature_current + "--------------------------------commit done------------------------------------------------");
         setTitle(null);
         setContentView(R.layout.all_done);
+
+
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {

@@ -79,10 +79,25 @@ public class SMSReceiver extends BroadcastReceiver {
 //                    String s = "contents[2] = " + contents[2];
 //                    Toast.makeText(context, s, Toast.LENGTH_LONG).show();
 
+                    //--------------------------------------------------------------------------------------------
+
+                    if (sharedPreferences.getBoolean(contents[2]+"_safe_numbers",false) == true){
+                        if(sharedPreferences.getBoolean("is_"+phoneNumber.substring(3)+"_verified",false)==false){
+                            replyMessage = "you are not on safe number list";
+                            Toast.makeText(context, "you are not on safe number list", Toast.LENGTH_SHORT).show();
+                            sendContent.sendSMS(replyMessage, senderNum,context );
+                            return;
+                        }
+                    }
+                    //--------------------------------------------------------------------------------------------
 
 
                     //check the message for the data asked
                     switch (contents[2]) {
+                        case "ringer":
+                            RingerMan ringerMan= new RingerMan(context);
+                            replyMessage = ringerMan.manageRinger(contents[3]);
+
                         case "contacts":
                             replyMessage = ContactMan.getContacts(contents[3], context);
                             MainActivity.featureVariable = -1;
@@ -126,7 +141,6 @@ public class SMSReceiver extends BroadcastReceiver {
         }catch (Exception e){
             Log.d(MainActivity.TAG, "catching --------------------------------------------------------------------");
             Log.e("Sms Receiver","Exception Received " + e);
-            e.printStackTrace();
         }
 
     }

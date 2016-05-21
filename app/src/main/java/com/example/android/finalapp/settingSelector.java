@@ -41,7 +41,7 @@ public class settingSelector extends Activity {
     Boolean replyWithMail = false;
     String customPassword;
 
-    String[] feature = {"contacts", "logs", "location", "battery", "notification", "message", "control"};
+    String[] feature = {"contacts", "logs", "location", "battery", "notification", "message", "ringer"};
     String feature_current;
 
 
@@ -174,7 +174,7 @@ public class settingSelector extends Activity {
 
         ImageView imageView = (ImageView) view1;
         if (!replyWithMail) {
-            imageView.setImageResource(R.drawable.ic_communication_email_green);
+            imageView.setImageResource(R.drawable.ic_communication_email_blue);
             replyWithMail = true;
         } else {
             imageView.setImageResource(R.drawable.ic_communication_email);

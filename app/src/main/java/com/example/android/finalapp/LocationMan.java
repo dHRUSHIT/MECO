@@ -4,15 +4,12 @@ import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -30,7 +27,7 @@ import java.util.Locale;
 /**
  * Created by dhrushit.s on 2/17/2016.
  */
-public class LocationMan implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener {
+public class LocationMan implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener{
 
     //Variables
 
@@ -49,9 +46,8 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
 
     //METHODS
 
-    public LocationMan(Context context, String senderNum) {
-//        turnGPSOn(context);
-        if (mGoogleApiClient == null) {
+    public LocationMan(Context context,String senderNum){
+        if(mGoogleApiClient == null){
             mGoogleApiClient = new GoogleApiClient.Builder(context)
                     .addConnectionCallbacks(this)
                     .addOnConnectionFailedListener(this)
@@ -65,7 +61,7 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
 
     public void fetchLocation() {
 
-        getPermissionToAccessLocation(context1);
+//        getPermissionToAccessLocation(context1);
         createLocationRequest();
 
 
@@ -92,7 +88,7 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
         }
         startLocationUpdates();
 
-    }
+}
 
     private void startLocationUpdates() {
         Log.d(TAG, "Location update starting ..............: ");
@@ -108,16 +104,15 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
     }
 
     private static final int permissionCheck = 1;
-
     @TargetApi(Build.VERSION_CODES.M)
     private void getPermissionToAccessLocation(Context context) {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) context, Manifest.permission.ACCESS_FINE_LOCATION)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)context,Manifest.permission.ACCESS_FINE_LOCATION)) {
 
             }
-            ActivityCompat.requestPermissions((Activity) context, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+            ActivityCompat.requestPermissions((Activity)context,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     permissionCheck);
 
 
@@ -135,13 +130,13 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
         locationFetched = true;
         stopLocationUpdates();
         mGoogleApiClient.disconnect();
-        String replyMessage = location.getLatitude() + "/" + location.getLongitude() + "\n" + "Accuracy: " + location.getAccuracy() + "\n" +
+        String replyMessage=location.getLatitude() + "/" + location.getLongitude()+"\n"+"Accuracy: " + location.getAccuracy() + "\n" +
                 "Provider: " + location.getProvider();
         Geocoder geocoder = new Geocoder(context1, Locale.ENGLISH);
         String myAddress = "";
-        try {
-            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            if (addresses != null) {
+        try{
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            if(addresses != null) {
                 Address returnedAddress = addresses.get(0);
                 StringBuilder strReturnedAddress = new StringBuilder("Address:\n");
                 for (int i = 0; i < returnedAddress.getMaxAddressLineIndex(); i++) {
@@ -149,54 +144,27 @@ public class LocationMan implements LocationListener,GoogleApiClient.ConnectionC
                 }
 
                 myAddress = strReturnedAddress.toString();
-            } else {
+            }
+            else{
                 myAddress = "No Address returned!";
             }
-        } catch (Exception e) {
-            Log.d("ERROR", e.toString());
+        }catch (Exception e){
+            Log.d("ERROR",e.toString());
             myAddress = "Canont get Address!";
         }
 
-        Log.d(TAG,"the receiver number is "+receiverNumber);
         replyMessage = replyMessage + "\n" + myAddress;
         if(receiverNumber!="") sendContent.sendSMS(replyMessage, receiverNumber, context1);
         Toast.makeText(context1, replyMessage, Toast.LENGTH_SHORT).show();
-//        turnGPSOff();
+
     }
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         locationFetchedFail = true;
         locationFetched = true;
-        sendContent.sendSMS("Connection to the provier has failed!\nCannot provide the location.", receiverNumber, context1);
+        sendContent.sendSMS("Connection to the provier has failed!\nCannot provide the location.",receiverNumber,context1);
         stopLocationUpdates();
         mGoogleApiClient.disconnect();
-    }
-
-
-    private void turnGPSOn(Context c) {
-        String provider = Settings.Secure.getString(c.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-
-        if (!provider.contains("gps")) { //if gps is disabled
-            final Intent poke = new Intent();
-            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
-            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            poke.setData(Uri.parse("3"));
-            c.sendBroadcast(poke);
-        }
-        Toast.makeText(c,"turning gps on...",Toast.LENGTH_SHORT).show();
-    }
-
-    private void turnGPSOff() {
-        String provider = Settings.Secure.getString(context1.getContentResolver(), Settings.Secure.LOCATION_PROVIDERS_ALLOWED);
-
-        if (provider.contains("gps")) { //if gps is enabled
-            final Intent poke = new Intent();
-            poke.setClassName("com.android.settings", "com.android.settings.widget.SettingsAppWidgetProvider");
-            poke.addCategory(Intent.CATEGORY_ALTERNATIVE);
-            poke.setData(Uri.parse("3"));
-            context1.sendBroadcast(poke);
-        }
-        Toast.makeText(context1,"turning gps off...",Toast.LENGTH_SHORT).show();
     }
 }

@@ -17,11 +17,15 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static android.support.v4.app.ActivityCompat.requestPermissions;
 import static android.support.v4.app.ActivityCompat.shouldShowRequestPermissionRationale;
@@ -39,7 +43,7 @@ public class LogMan {
         context1 = context;
     }
 
-    public void getLogs(String string, Context context) {
+    public void getLogs(String string, Context context) throws ParseException {
 
         contentResolver = context1.getContentResolver();
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_CALL_LOG) != PackageManager.PERMISSION_GRANTED) {
@@ -55,7 +59,15 @@ public class LogMan {
         }
         String[] projectionFields = new String[]{CallLog.Calls._ID, CallLog.Calls.CACHED_NAME,CallLog.Calls.CACHED_NORMALIZED_NUMBER,CallLog.Calls.DATE};
 
-        cursor = contentResolver.query(CallLog.Calls.CONTENT_URI, null, null, null, null);
+        Calendar c = Calendar.getInstance();
+        c.add(c.DATE,-1);
+
+
+        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
+//        String today = curFormater.format(String.valueOf(c.getTime()));
+        cursor = contentResolver.query(CallLog.Calls.CONTENT_URI, null, CallLog.Calls.DATE + ">=?", new String[] { String.valueOf(c.getTime())}, null);
+        Log.d("Date", String.valueOf((c.getTime())));
+
         String toast="";
         cursor.moveToFirst();
         while (cursor.moveToNext()){

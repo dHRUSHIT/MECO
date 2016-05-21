@@ -12,5 +12,10 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:focusable="false"
         android:clickable="false"
+<<<<<<< HEAD
+=======
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+>>>>>>> new local repo
         />
 </LinearLayout>

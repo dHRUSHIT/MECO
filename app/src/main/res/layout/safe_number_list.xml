@@ -11,6 +11,20 @@
         android:layout_weight="1"
         android:descendantFocusability="blocksDescendants"/>
 
+<<<<<<< HEAD
+=======
+    <View
+        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:paddingRight="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:background="#90909090"
+
+        android:id="@+id/separatorLine4"
+        android:layout_weight="0"
+        />
+
+>>>>>>> new local repo
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,6 +32,10 @@
         android:id="@+id/button2"
         android:layout_gravity="center_horizontal"
         android:layout_weight="9"
+<<<<<<< HEAD
+=======
+        android:background="@android:color/transparent"
+>>>>>>> new local repo
         android:onClick="startVerification"/>
 
 

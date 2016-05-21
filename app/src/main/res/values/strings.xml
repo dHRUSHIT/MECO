@@ -1,5 +1,9 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">final app</string>
+=======
+    <string name="app_name">MeCo</string>
+>>>>>>> new local repo
     <string name="contacts">\"contacts\"</string>
     <string name="password">Key</string>
     <string name="preference_file_key">com.example.finalApp.PREFERENCE_FILE_KEY</string>
@@ -42,4 +46,12 @@
     <string name="global_password">global_password</string>
     <string name="global_reply_message">global_reply_message</string>
     <string name="global_reply_email">global_reply_email</string>
+<<<<<<< HEAD
+=======
+    <string name="allow_ringer_access">allow_ringer_access</string>
+    <string name="ringer_global_password">ringer_global_password</string>
+    <string name="ringer_reply_mode_global">ringer_reply_mode_global</string>
+    <string name="ringer_safe_numbers">ringer_safe_numbers</string>
+    <string name="ringer_custom_password_key">ringer_custom_password_key</string>
+>>>>>>> new local repo
 </resources>
